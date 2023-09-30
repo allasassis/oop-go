@@ -10,11 +10,21 @@ type CurrentAccount struct {
 }
 
 func main() {
-	account := CurrentAccount{"Allas", 581, 10941, 0}
-	account1 := CurrentAccount{name: "John", balance: 41.1}
-	fmt.Println(account, account1)
+	account := CurrentAccount{}
+	account.name = "John"
+	account.accountNumber = 1230
+	account.balance = 500
+	account.agencyNumber = 8231
 
-	var account2 *CurrentAccount = new(CurrentAccount)
-	account2.name = "Luke"
-	fmt.Println(*account2)
+	message := account.withdraw(200)
+	fmt.Println(message)
+}
+
+func (account *CurrentAccount) withdraw(value float64) string {
+	if account.balance < value && value > 0 {
+		return "Unfortunately, you cannot make a withdrawal because your balance is lower than your request."
+	}
+
+	account.balance -= value
+	return "Your withdrawal has been successfully processed! And now your balance is: " + fmt.Sprintf("%.2f", account.balance)
 }
