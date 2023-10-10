@@ -4,17 +4,13 @@ import (
 	"fmt"
 
 	acc "OOP/accounts"
+	"OOP/holder"
 )
 
 func main() {
-	account := acc.CurrentAccount{}
-	account.Name = "John"
-	account.AccountNumber = 1230
-	account.Balance = 500
-	account.AgencyNumber = 8231
+	holder := holder.Holder{Name: "John", Identity: 13292319, Profession: "Teacher"}
+	account := acc.CurrentAccount{Holder: holder, AgencyNumber: 12133, AccountNumber: 123213}
 
-	account2 := acc.CurrentAccount{"Luke", 3212, 321, 1000}
-
-	fmt.Println(account2.Transfer(832, &account))
-	fmt.Println("Current balance:", account.Balance)
+	fmt.Println("Name:", account.Holder.Name)
+	fmt.Println("John's balance is:", account.ReturnBalance())
 }
