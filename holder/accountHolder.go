@@ -1,7 +1,6 @@
 package holder
 
 type Holder struct {
-	Name       string
-	Identity   int
-	Profession string
+	Name, Profession string
+	Identity         int
 }

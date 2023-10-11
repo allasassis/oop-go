@@ -13,7 +13,7 @@ type CurrentAccount struct {
 }
 
 func (account *CurrentAccount) Withdraw(value float64) string {
-	if account.balance < value && value > 0 {
+	if account.balance < value || value < 0 {
 		return "Unfortunately, you cannot make a withdrawal because your balance is lower than your request."
 	}
 
@@ -39,6 +39,6 @@ func (account *CurrentAccount) Transfer(transferValue float64, destinyAccount *C
 	}
 }
 
-func (c *CurrentAccount) ReturnBalance() float64 {
+func (c CurrentAccount) GetBalance() float64 {
 	return c.balance
 }
